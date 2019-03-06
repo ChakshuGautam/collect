@@ -182,8 +182,8 @@ public class SplashScreenActivity extends Activity {
         LinearLayout ll = findViewById(R.id.splash_default);
 
         File f = new File(path);
-        if (f.exists()) {
-            iv.setImageBitmap(decodeFile(f));
+        if (true) {
+            iv.setImageDrawable(getResources().getDrawable(R.drawable.splash_screen));
             ll.setVisibility(View.GONE);
             iv.setVisibility(View.VISIBLE);
         }
