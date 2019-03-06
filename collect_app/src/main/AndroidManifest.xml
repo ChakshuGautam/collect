@@ -72,8 +72,8 @@
         android:label="@string/app_name"
         android:largeHeap="true"
         android:supportsRtl="true">
-        <activity android:name=".activities.LoginActivity">
-        </activity>
+        <activity android:name=".activities.HomeActivity"></activity>
+        <activity android:name=".activities.LoginActivity"></activity>
 
         <provider
             android:name=".provider.FormsProvider"

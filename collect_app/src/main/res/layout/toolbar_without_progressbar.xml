@@ -4,10 +4,11 @@
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:background="?attr/colorPrimary"
+    android:background="@drawable/gradient_bg"
     android:minHeight="?attr/actionBarSize"
     app:contentInsetEnd="0dp"
     app:contentInsetStart="0dp"
+    android:translationZ="4dp"
     app:contentInsetStartWithNavigation="0dp"
-    app:navigationIcon="@drawable/notes"
+    app:navigationIcon="@drawable/ic_menu_black_24dp"
     app:theme="@style/ThemeOverlay.AppCompat.ActionBar" />

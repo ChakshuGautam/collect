@@ -6,10 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".activities.LoginActivity">
 
-    <!--TODO: Add the following line to LL below-->
-    <!--android:background="@drawable/gradient_bg"-->
-
     <LinearLayout
+        android:background="@drawable/gradient_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -165,12 +163,14 @@
                 android:layout_height="0dp">
 
                 <TextView
+                    android:paddingTop="10dp"
                     android:textSize="25sp"
                     android:textAlignment="center"
-                    android:text="@string/login"
+                    android:text="Login"
                     android:layout_weight="3"
                     android:layout_width="match_parent"
                     android:layout_height="0dp">
+
 
                 </TextView>
 
@@ -181,6 +181,9 @@
                     android:layout_height="0dp">
 
                     <TextView
+                        android:paddingRight="8dp"
+                        android:textSize="20sp"
+                        android:gravity="center_vertical|right"
                         android:text="Username"
                         android:layout_weight="2"
                         android:layout_width="0dp"
@@ -199,6 +202,9 @@
                     android:layout_height="0dp">
 
                     <TextView
+                        android:paddingRight="8dp"
+                        android:textSize="20sp"
+                        android:gravity="center_vertical|right"
                         android:text="Password"
                         android:layout_weight="2"
                         android:layout_width="0dp"
@@ -219,6 +225,8 @@
                     android:layout_height="0dp" />
 
                 <TextView
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center_vertical"
                     android:textAlignment="center"
                     android:text="Forgot Password"
                     android:layout_weight="3"
@@ -241,6 +249,7 @@
                 android:layout_height="match_parent" />
 
             <ImageView
+                android:padding="30dp"
                 android:src="@drawable/samarth_logo"
                 android:layout_weight="1"
                 android:layout_width="0dp"
