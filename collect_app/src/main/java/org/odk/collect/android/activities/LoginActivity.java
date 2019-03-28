@@ -24,5 +24,6 @@ public class LoginActivity extends CollectAbstractActivity {
 
     private void endLoginActivity() {
         startActivity(new Intent(this, HomeActivity.class));
+        finish();
     }
 }

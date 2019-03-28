@@ -407,10 +407,10 @@
     <string name="selected_answer">Selected: %s</string>
     <string name="version_number">Version: %s</string>
     <string name="id_number">ID: %s</string>
-    <string name="odk_website">Visit the ODK website</string>
-    <string name="odk_website_summary">Open Data Kit (ODK) is used to collect data for social good in challenging environments.</string>
-    <string name="odk_forum">Join the ODK forum</string>
-    <string name="odk_forum_summary">Join the forum to get support, request features, contribute code/translations! </string>
+    <string name="odk_website">Visit the Samagra website</string>
+    <string name="odk_website_summary">Samagra is a governance consulting firm. We differ from other consulting firms in that our clients are solely state governments. Our mandates include complex governance problems aimed at improving the quality of life of citizens; we work with governments across India on a variety of domains through state-wide transformation programs. We not only play an advisory role but also look after end to end implementation. We are different because our outcomes are mapped to the end beneficiary directly. A combination of deep-seated purpose and colleagues who are passionate about social change is what distinguishes us.</string>
+    <string name="odk_forum">See our Blog</string>
+    <string name="odk_forum_summary">Samvad, The Samagra Blog </string>
     <string name="all_open_source_licenses">Open source libraries/licenses</string>
     <string name="all_open_source_licenses_msg">We stand on the shoulders of giants!</string>
 

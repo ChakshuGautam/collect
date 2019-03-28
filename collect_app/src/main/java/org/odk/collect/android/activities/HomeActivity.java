@@ -1,20 +1,31 @@
 package org.odk.collect.android.activities;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 
 import org.odk.collect.android.R;
 import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.logic.FormDetails;
 import org.odk.collect.android.preferences.AdminKeys;
 import org.odk.collect.android.preferences.AdminPreferencesActivity;
 import org.odk.collect.android.preferences.PreferencesActivity;
+import org.odk.collect.android.tasks.DownloadFormsTask;
 import org.odk.collect.android.utilities.ApplicationConstants;
+
+import java.util.ArrayList;
 
 public class HomeActivity extends CollectAbstractActivity {
 
@@ -26,6 +37,7 @@ public class HomeActivity extends CollectAbstractActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         initToolbar();
+        downloadForm();
         adminPreferences = this.getSharedPreferences(
                 AdminPreferencesActivity.ADMIN_PREFERENCES, 0);
 
@@ -91,37 +103,50 @@ public class HomeActivity extends CollectAbstractActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String[] options = {"About Us", "Tutorial Videos", "Logout"};
+                AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+                builder.setTitle("");
+                builder.setItems(options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int item) {
+                        if(item == 0) {
+                            startActivity(new Intent(HomeActivity.this, AboutActivity.class));
+                        } else if(item == 1) {
+                            Log.e("HomeActivity", "Videos screen called");
+                        } else if(item == 2) {
+                            startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+                        }
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.getWindow().setLayout(150, 150);
+                WindowManager.LayoutParams wmlp = dialog.getWindow().getAttributes();
 
+                wmlp.gravity = Gravity.TOP | Gravity.LEFT;
+                wmlp.x = 0;   //x position
+                wmlp.y = 100;   //y position
+
+                dialog.show();
             }
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_about:
-                startActivity(new Intent(this, AboutActivity.class));
-                return true;
-            case R.id.menu_general_preferences:
-                startActivity(new Intent(this, PreferencesActivity.class));
-                return true;
-            case R.id.menu_admin_preferences:
-                String pw = adminPreferences.getString(
-                        AdminKeys.KEY_ADMIN_PW, "");
-                if ("".equalsIgnoreCase(pw)) {
-                    startActivity(new Intent(this, AdminPreferencesActivity.class));
-                } else {
-                    showDialog(PASSWORD_DIALOG);
-                }
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
+    private void downloadForm(){
+        ArrayList<FormDetails> filesToDownload = new ArrayList<>();
+        FormDetails fm = new FormDetails(
+                "School Inspection TEST",
+                "http://142.93.214.208:8080/formXml?formId=build_School-Inspection-TEST_1549218200",
+                null,
+                "build_School-Inspection-TEST_1549218200",
+                "",
+                null,
+                null,
+                false,
+                false);
+        filesToDownload.add(fm);
+        DownloadFormsTask downloadFormsTask = new DownloadFormsTask();
+        downloadFormsTask.execute(filesToDownload);
     }
 }
 
